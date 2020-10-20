@@ -1,21 +1,18 @@
 import GoTrue from "gotrue-js";
-
+export const API_URL = "/.netlify";
+export const API_IDENTITY_URL = `${API_URL}/identity`;
 export const auth = new GoTrue({
-  APIUrl: "https://netlify-gotrue-in-vue.netlify.com/.netlify/identity",
+  APIUrl: API_IDENTITY_URL,
   audience: "",
-  setCookie: false
+  setCookie: true
 });
 
 const state = {
-  currentUser: getSavedState("auth.currentUser"),
+  currentUser: auth.currentUser(),
   loading: false,
   loggedIn: false,
   token: null,
   notifications: []
 };
-
-function getSavedState(key) {
-  return JSON.parse(window.localStorage.getItem(key));
-}
 
 export default state;
