@@ -15,11 +15,14 @@ export default {
     async generateToken() {
       let token = await store.getters["auth/currentUser"].jwt(true);
       console.log("This is the token: " + token);
+      console.log(
+        "This is the User object: ",
+        store.getters["auth/currentUser"]
+      );
     }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
